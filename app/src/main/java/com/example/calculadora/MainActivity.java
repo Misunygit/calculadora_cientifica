@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class MainActivity<valor> extends AppCompatActivity {
     Button btOne, btTwo, btThree, btFour, btFive, btSix, btSeven, btEight, btNine, btZero, btDot, btEqual, btPi, btMinus, btPlus, btSquare, btSquareRoot, btBack, btErase, btLeftBracket, btRightBracket, btSin, btCos, btTan, btLog, btLogN, btDivision, btInverse, btFact, btMultipla;
     TextView textNumber, viewOp;
     String pi = "3.14";
@@ -292,11 +294,18 @@ public class MainActivity extends AppCompatActivity {
                 double result = eval(replacedString);
                 String response = String.valueOf(result);
                 textNumber.setText(response);
-                viewOp.setText(valor);
+     // método para apresentar 5 equações no campo viewOp
+                if (viewOp.getText().equals("")){
+                    viewOp.setText(valor);
+                } else{
+                    viewOp.append("\n" + valor);
+                }
             }
         });
+
     }
-        // função fatorial
+
+    // função fatorial
              int factorial(int number){
                  return (number == 1 || number == 0) ? 1 : number * factorial(number - 1);
             }
